@@ -7,8 +7,9 @@ header{
 h1{
     text-align: center;
 }
-button{
+a{
     position: absolute;
     right: 10px;
     top: 35px;
+    color: white;
 }
