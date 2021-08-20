@@ -1,19 +1,25 @@
-p{
-    margin: 0px;
+p {
+  margin: 0px;
 }
-.img{
-    border-radius: 50%;
-    margin-right: 10px;
+.img {
+  border-radius: 50%;
+  margin-right: 10px;
 }
-.imgExtra{
-    width: 100%;
+.imgExtra {
+  width: 100%;
 }
-.aps{
-    position: relative;
+.aps {
+  position: relative;
 }
-.name{
-    position: relative;
-    bottom: 40px;
-    left: 10px;
-    color: white;
+.name {
+  position: relative;
+  bottom: 40px;
+  left: 10px;
+  color: white;
+}
+.shadow:hover {
+  -webkit-box-shadow: -4px 7px 12px 4px #a1a1a1 !important;
+  box-shadow: -4px 7px 12px 4px #a1a1a1 !important;
+  transition: 0.5s !important;
+  padding: 5px;
 }
