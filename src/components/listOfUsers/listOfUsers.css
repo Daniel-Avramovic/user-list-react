@@ -1,0 +1,19 @@
+p{
+    margin: 0px;
+}
+.img{
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.imgExtra{
+    width: 100%;
+}
+.aps{
+    position: relative;
+}
+.name{
+    position: relative;
+    bottom: 40px;
+    left: 10px;
+    color: white;
+}
