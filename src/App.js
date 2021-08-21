@@ -25,10 +25,11 @@ class App extends React.Component {
       });
   }
   toggleLayout = () => this.setState({ isListView: !this.state.isListView });
+  refresh = () => this.componentDidMount();
   render() {
     return (
       <Fragment>
-        <Header changeUi={this.toggleLayout} view={this.state.isListView} />
+        <Header changeUi={this.toggleLayout} view={this.state.isListView} refresh={this.refresh}/>
         {this.state.isListView ? (
           <ListOfUsers users={this.state.people} />
         ) : (

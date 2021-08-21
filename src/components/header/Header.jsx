@@ -1,19 +1,19 @@
 import React from "react";
 import "./header.css";
-const Header = ({ changeUi, view }) => {
+const Header = ({ changeUi, view, refresh}) => {
   return (
     <header>
     <nav>
-      <div class="nav-wrapper">
-        <a href="!#" class="brand-logo center">
+      <div className="nav-wrapper">
+        <a href="!#" className="brand-logo center">
           Bit People
         </a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <ul id="nav-mobile" className="right hide-on-med-and-down">
           <li>
-            <a href="sass.html">Sass</a>
+            <a href="about.html">About us</a>
           </li>
           <li>
-            <a href="badges.html">Components</a>
+            <a href="!#"><i className="medium material-icons" onClick={refresh}>refresh</i></a>
           </li>
           <li>
             <a href="!#" onClick={changeUi}> <i className="medium material-icons">{view? "grid_on" : "format_list_bulleted"}</i></a>
