@@ -1,6 +1,7 @@
 import React from "react";
 import { Fragment } from "react";
 import Header from "./components/header/Header";
+import Count from "./components/countMaleAndFemale/CountMaleAndFemale"
 import ListOfUsers from "./components/listOfUsers/ListOfUsers";
 import { ListOfUsersExtra } from "./components/listOfUsers/ListOfUsers-extra";
 import { Footer } from "./components/footer/Footer";
@@ -30,6 +31,7 @@ class App extends React.Component {
     return (
       <Fragment>
         <Header changeUi={this.toggleLayout} view={this.state.isListView} refresh={this.refresh}/>
+        <Count users={this.state.people}/>
         {this.state.isListView ? (
           <ListOfUsers users={this.state.people} />
         ) : (
