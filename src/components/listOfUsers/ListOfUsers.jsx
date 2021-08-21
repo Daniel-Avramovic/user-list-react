@@ -3,21 +3,20 @@ import { Container, Row } from "react-bootstrap";
 import { parseDateList } from "../../data/parseDateForList";
 import "./listOfUsers.css";
 
-const ListOfUsers = ({ users }) => {
-  console.log(users);
+const ListOfUsers = ({ users, val }) => {
   if (users.length === 0) {
     return (
       // load cube
-      <div class="sk-cube-grid">
-        <div class="sk-cube sk-cube1"></div>
-        <div class="sk-cube sk-cube2"></div>
-        <div class="sk-cube sk-cube3"></div>
-        <div class="sk-cube sk-cube4"></div>
-        <div class="sk-cube sk-cube5"></div>
-        <div class="sk-cube sk-cube6"></div>
-        <div class="sk-cube sk-cube7"></div>
-        <div class="sk-cube sk-cube8"></div>
-        <div class="sk-cube sk-cube9"></div>
+      <div className="sk-cube-grid">
+        <div className="sk-cube sk-cube1"></div>
+        <div className="sk-cube sk-cube2"></div>
+        <div className="sk-cube sk-cube3"></div>
+        <div className="sk-cube sk-cube4"></div>
+        <div className="sk-cube sk-cube5"></div>
+        <div className="sk-cube sk-cube6"></div>
+        <div className="sk-cube sk-cube7"></div>
+        <div className="sk-cube sk-cube8"></div>
+        <div className="sk-cube sk-cube9"></div>
       </div>
     );
   }
@@ -25,7 +24,15 @@ const ListOfUsers = ({ users }) => {
     <Container>
       <Row>
         <div>
-          {users.map((user, index) => {
+          {users.filter(user => {
+          if(val === ""){
+            return user
+          }else if(user.name.first.toLowerCase().includes(val.toLowerCase())){
+            return user
+          }else{
+            return false;
+          }
+        }).map((user, index) => {
             let classes = "d-flex m-3 mar";
             if (user.gender === "female") {
               classes = "d-flex m-3 mar purpleClass";

@@ -4,7 +4,8 @@ import hideAdress from "../../data/hideEmail";
 import parseDateExtra from "../../data/parseDate";
 import "./listOfUsers.css";
 
-export const ListOfUsersExtra = ({users}) => {
+export const ListOfUsersExtra = ({users, val}) => {
+  console.log(users, val, 'val from users')
   if(users.length === 0){
     return(
       <h1>Loading...</h1>
@@ -13,7 +14,15 @@ export const ListOfUsersExtra = ({users}) => {
   return (
     <Container>
       <Row>
-        {users.map((result, index) => (
+        {users.filter(user => {
+          if(val === ""){
+            return user
+          }else if(user.name.first.toLowerCase().includes(val.toLowerCase())){
+            return user
+          }else{
+            return false;
+          }
+        }).map((result, index) => (
           <div className="col-12 col-md-4 col-sm-6 aps mb-3" key={index}>
             <div className="card shadow">
             <img

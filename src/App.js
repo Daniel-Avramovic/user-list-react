@@ -1,6 +1,7 @@
 import React from "react";
 import { Fragment } from "react";
 import Header from "./components/header/Header";
+import Search from "./components/searchBar/SearchBar"
 import Count from "./components/countMaleAndFemale/CountMaleAndFemale"
 import ListOfUsers from "./components/listOfUsers/ListOfUsers";
 import { ListOfUsersExtra } from "./components/listOfUsers/ListOfUsers-extra";
@@ -13,6 +14,7 @@ class App extends React.Component {
     this.state = {
       isListView: true,
       people: [],
+      search:"",
     };
   }
   componentDidMount() {
@@ -27,15 +29,17 @@ class App extends React.Component {
   }
   toggleLayout = () => this.setState({ isListView: !this.state.isListView });
   refresh = () => this.componentDidMount();
+  onChange = (e) => this.setState({search: e.target.value})
   render() {
     return (
       <Fragment>
         <Header changeUi={this.toggleLayout} view={this.state.isListView} refresh={this.refresh}/>
+        <Search search={this.onChange} val={this.state.search}/>
         <Count users={this.state.people}/>
         {this.state.isListView ? (
-          <ListOfUsers users={this.state.people} />
+          <ListOfUsers users={this.state.people} val={this.state.search}/>
         ) : (
-          <ListOfUsersExtra users={this.state.people} />
+          <ListOfUsersExtra users={this.state.people} val={this.state.search}/>
         )}
         <Footer />
       </Fragment>
