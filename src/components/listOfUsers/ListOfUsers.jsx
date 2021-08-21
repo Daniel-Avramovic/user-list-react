@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Row } from "react-bootstrap";
+import { filterUser } from "../../data/flteredUsers";
 import { parseDateList } from "../../data/parseDateForList";
 import "./listOfUsers.css";
 
@@ -24,15 +25,7 @@ const ListOfUsers = ({ users, val }) => {
     <Container>
       <Row>
         <div>
-          {users.filter(user => {
-          if(val === ""){
-            return user
-          }else if(user.name.first.toLowerCase().includes(val.toLowerCase())){
-            return user
-          }else{
-            return false;
-          }
-        }).map((user, index) => {
+          {filterUser(users, val).map((user, index) => {
             let classes = "d-flex m-3 mar";
             if (user.gender === "female") {
               classes = "d-flex m-3 mar purpleClass";
