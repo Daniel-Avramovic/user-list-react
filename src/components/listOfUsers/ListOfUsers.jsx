@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Row } from "react-bootstrap";
+import { parseDateList } from '../../data/parseDateForList'
 import "./listOfUsers.css";
 
 const ListOfUsers = ({users}) => {
@@ -27,8 +28,8 @@ const ListOfUsers = ({users}) => {
               />
               <div>
                 <p>Name: {user.name.first}</p>
-                <p>E-mail: {user.email}</p>
-                <p>Date of birth: {user.dob.date}</p>
+                <p className='d-Flex'><i className="material-icons">local_post_office</i>mail: {user.email}</p>
+                <p className='d-Flex'><i className="material-icons">cake</i>{parseDateList(user.dob.date)}</p>
               </div>
             </div>
           );
