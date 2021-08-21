@@ -34,7 +34,10 @@ ul {
   border-bottom: 1px solid gray;
   padding: 10px;
 }
-
+.count{
+  text-align: right;
+  color: rgb(155, 153, 153);
+}
 /* load cube */
 
 .sk-cube-grid {

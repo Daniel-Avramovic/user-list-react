@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Row } from "react-bootstrap";
 import { filterUser } from "../../data/flteredUsers";
 import { parseDateList } from "../../data/parseDateForList";
+import { count } from "../../data/countMaleAndFemile"
 import "./listOfUsers.css";
 
 const ListOfUsers = ({ users, val }) => {
@@ -23,6 +24,7 @@ const ListOfUsers = ({ users, val }) => {
   }
   return (
     <Container>
+      <p className="count">{count(filterUser(users, val))}</p>
       <Row>
         <div>
           {filterUser(users, val).map((user, index) => {

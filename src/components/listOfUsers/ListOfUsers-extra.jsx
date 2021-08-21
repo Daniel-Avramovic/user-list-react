@@ -3,6 +3,7 @@ import { Container, Row } from "react-bootstrap";
 import hideAdress from "../../data/hideEmail";
 import parseDateExtra from "../../data/parseDate";
 import { filterUser } from "../../data/flteredUsers";
+import { count } from "../../data/countMaleAndFemile"
 import "./listOfUsers.css";
 
 export const ListOfUsersExtra = ({ users, val }) => {
@@ -13,6 +14,7 @@ export const ListOfUsersExtra = ({ users, val }) => {
 
   return (
     <Container>
+      <p className="count">{count(filterUser(users, val))}</p>
       <Row>
         {filterUser(users, val).map((result, index) => (
           <div className="col-12 col-md-4 col-sm-6 aps mb-3" key={index}>
