@@ -28,8 +28,8 @@ const ListOfUsers = ({users}) => {
               />
               <div>
                 <p>Name: {user.name.first}</p>
-                <p className='d-Flex'><i className="material-icons">local_post_office</i>mail: {user.email}</p>
-                <p className='d-Flex'><i className="material-icons">cake</i>{parseDateList(user.dob.date)}</p>
+                <p className='d-flex'><i className="material-icons">local_post_office</i>mail: {user.email}</p>
+                <p className='d-flex'><i className="material-icons">cake</i>{parseDateList(user.dob.date)}</p>
               </div>
             </div>
           );
