@@ -5,6 +5,11 @@ import parseDateExtra from "../../data/parseDate";
 import "./listOfUsers.css";
 
 export const ListOfUsersExtra = ({users}) => {
+  if(users.length === 0){
+    return(
+      <h1>Loading...</h1>
+    )
+  }
   return (
     <Container>
       <Row>

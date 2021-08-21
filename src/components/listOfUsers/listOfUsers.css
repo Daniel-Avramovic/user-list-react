@@ -23,3 +23,15 @@ p {
   transition: 0.5s !important;
   padding: 5px;
 }
+ul{
+    margin: 0px;
+}
+.purple{
+    background-color: #ffebee;
+}
+.mar{
+    margin: 0px !important;
+    border-bottom: 1px solid gray;
+    padding: 3px;
+    
+}

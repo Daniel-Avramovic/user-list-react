@@ -3,12 +3,23 @@ import { Container, Row } from "react-bootstrap";
 import "./listOfUsers.css";
 
 const ListOfUsers = ({users}) => {
+  console.log(users)
+  if(users.length === 0){
+    return(
+      <h1>Loading...</h1>
+    )
+  }
   return (
     <Container>
       <Row>
+        <div>
         {users.map((user, index) => {
+          let classes = 'd-flex m-3 mar'
+          if(user.gender === 'female'){
+            classes = 'd-flex m-3 mar purple'
+          }
           return (
-            <div className="d-flex m-3" key={index}>
+            <div className={classes} key={index}>
               <img
                 src={user.picture.thumbnail}
                 alt="Loading!!!"
@@ -22,6 +33,7 @@ const ListOfUsers = ({users}) => {
             </div>
           );
         })}
+        </div>
       </Row>
     </Container>
   );
