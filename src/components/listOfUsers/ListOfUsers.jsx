@@ -38,7 +38,7 @@ const ListOfUsers = ({ users }) => {
                   className="img"
                 />
                 <div>
-                  <p>Name: {user.name.first}</p>
+                  <p>{user.name.first} {user.name.last}</p>
                   <p className="d-flex">
                     <i className="material-icons">local_post_office</i>mail:{" "}
                     {user.email}
