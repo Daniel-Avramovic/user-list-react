@@ -16,7 +16,7 @@ const ListOfUsers = ({users}) => {
         {users.map((user, index) => {
           let classes = 'd-flex m-3 mar'
           if(user.gender === 'female'){
-            classes = 'd-flex m-3 mar purple'
+            classes = 'd-flex m-3 mar purpleClass'
           }
           return (
             <div className={classes} key={index}>
