@@ -27,7 +27,7 @@ ul {
   margin: 0px;
 }
 .purpleClass {
-  background-color: #ffebee;
+  background-color: #ffebee !important;
 }
 .mar {
   margin: 0px !important;
