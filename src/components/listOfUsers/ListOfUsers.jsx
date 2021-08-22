@@ -6,7 +6,7 @@ import { count } from "../../data/countMaleAndFemile"
 import "./listOfUsers.css";
 
 const ListOfUsers = ({ users, val }) => {
-  if (users.length === 0) {
+  if (users.length === 0 ) {
     return (
       // load cube
       <div className="sk-cube-grid">

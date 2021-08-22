@@ -1,4 +1,5 @@
 import React from "react";
+import Search from '../searchBar/SearchBar'
 import { Container, Row } from "react-bootstrap";
 import hideAdress from "../../data/hideEmail";
 import parseDateExtra from "../../data/parseDate";
@@ -6,14 +7,14 @@ import { filterUser } from "../../data/flteredUsers";
 import { count } from "../../data/countMaleAndFemile"
 import "./listOfUsers.css";
 
-export const ListOfUsersExtra = ({ users, val }) => {
-  console.log(users, val, "val from users");
+export const ListOfUsersExtra = ({ users, val, search }) => {
   if (users.length === 0) {
     return <h1>Loading...</h1>;
   }
 
   return (
     <Container>
+      <Search search={search} val={val}/>
       <p className="count">{count(filterUser(users, val))}</p>
       <Row>
         {filterUser(users, val).map((user, index) => {
