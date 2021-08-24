@@ -5,6 +5,8 @@ import Search from "./components/searchBar/SearchBar";
 import ListOfUsers from "./components/listOfUsers/ListOfUsers";
 import { ListOfUsersExtra } from "./components/listOfUsers/ListOfUsers-extra";
 import { Footer } from "./components/footer/Footer";
+import Loader from "./components/loader/Loader";
+
 import "./App.css";
 class App extends React.Component {
   constructor(props) {
@@ -15,48 +17,49 @@ class App extends React.Component {
       search: "",
     };
   }
-  // storage =(arr) => {
-  //   let users = localStorage.getItem('users');
-  //   if(users === null){
-  //     this.setState({people: arr.results})
-  //     localStorage.setItem('users', this.state.people)
 
-  //   }
-  //   else{
-  //     this.setState({people: localStorage.getItem('users')})
-  //   }
-  // }
-  componentDidMount() {
-    const url = "https://randomuser.me/api/?results=15";
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        let get = localStorage.getItem('users');
-        if(get === null){
-          localStorage.setItem('users', JSON.stringify(data.results))
-          this.setState({
-               people: JSON.parse(localStorage.getItem('users')),
-            })};
-      });
-    // console.log(JSON.parse(localStorage.getItem("users")));
-  }
-  
-  toggleLayout = () => this.setState({ isListView: !this.state.isListView });
-  refresh = () => {
+  fetchUsers =  () => {
     this.setState({
-      search: "",
-      people: [],
-    });
+      isLoading: true,
+    })
     const url = "https://randomuser.me/api/?results=15";
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
         localStorage.setItem("users", JSON.stringify(data.results));
         this.setState({
-          search: "",
-          people: JSON.parse(localStorage.getItem("users")),
+          people: data.results,
+          isLoading: false,
         });
       });
+  };
+
+  componentDidMount() {
+    const users = localStorage.getItem("users");
+    if (!users) {
+      this.fetchUsers();
+    }
+    // const url = "https://randomuser.me/api/?results=15";
+    // fetch(url)
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     let get = localStorage.getItem('users');
+    //     if(get === null){
+    //       localStorage.setItem('users', JSON.stringify(data.results))
+    //       this.setState({
+    //            people:  data.results,
+    //         })};
+    //   });
+    // console.log(JSON.parse(localStorage.getItem("users")));
+  }
+
+  toggleLayout = () => this.setState({ isListView: !this.state.isListView });
+
+  refresh = () => {
+    this.setState({
+      search: "",
+    });
+    this.fetchUsers()
   };
   onChange = (e) => this.setState({ search: e.target.value });
   render() {
@@ -67,8 +70,9 @@ class App extends React.Component {
           view={this.state.isListView}
           refresh={this.refresh}
         />
-        {/* <Search search={this.onChange} val={this.state.search}/> */}
-        {this.state.isListView ? (
+        {this.state.isLoading && <Loader />}
+        {!this.state.isLoading && <Search search={this.onChange} val={this.state.search}/>}
+        {!this.state.isLoading && (this.state.isListView ? (
           <ListOfUsers
             users={this.state.people}
             val={this.state.search}
@@ -80,8 +84,8 @@ class App extends React.Component {
             val={this.state.search}
             search={this.onChange}
           />
-        )}
-        <Footer />
+        ))}
+        {!this.state.isLoading && <Footer />}
       </Fragment>
     );
   }

@@ -1,5 +1,4 @@
 import React from "react";
-import Search from '../searchBar/SearchBar'
 import { Container, Row } from "react-bootstrap";
 import hideAdress from "../../data/hideEmail";
 import parseDateExtra from "../../data/parseDate";
@@ -8,16 +7,12 @@ import { count } from "../../data/countMaleAndFemile"
 import "./listOfUsers.css";
 
 export const ListOfUsersExtra = ({ users, val, search }) => {
-  if (users.length === 0) {
-    return <h1>Loading...</h1>;
-  }
-
+  const filteredUsers = filterUser(users, val);
   return (
     <Container>
-      <Search search={search} val={val}/>
-      <p className="count">{count(filterUser(users, val))}</p>
+      <p className="count">{count(filteredUsers)}</p>
       <Row>
-        {filterUser(users, val).map((user, index) => {
+        {filteredUsers.map((user, index) => {
            let cardClass = "card shadow";
            if (user.gender === "female") {
             cardClass = "card shadow purpleClass";

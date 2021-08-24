@@ -16,7 +16,7 @@ const Header = ({ changeUi, view, refresh}) => {
             <a href="!#"><i className="medium material-icons" onClick={refresh}>refresh</i></a>
           </li>
           <li>
-            <a href="!#" onClick={changeUi}> <i className="medium material-icons">{view? "grid_on" : "format_list_bulleted"}</i></a>
+            <a href="!#" onClick={changeUi}> <i className="medium material-icons">{view? "view_module" : "view_list"}</i></a>
           </li>
         </ul>
       </div>
