@@ -1,11 +1,12 @@
 import React from "react";
 import { Fragment } from "react";
 import Header from "./components/header/Header";
-import Search from "./components/searchBar/SearchBar";
-import ListOfUsers from "./components/listOfUsers/ListOfUsers";
-import { ListOfUsersExtra } from "./components/listOfUsers/ListOfUsers-extra";
+// import Search from "./components/searchBar/SearchBar";
+// import ListOfUsers from "./components/listOfUsers/ListOfUsers";
+// import { ListOfUsersExtra } from "./components/listOfUsers/ListOfUsers-extra";
 import { Footer } from "./components/footer/Footer";
-import Loader from "./components/loader/Loader";
+// import Loader from "./components/loader/Loader";
+import { Home } from './components/home/Home'
 
 import "./App.css";
 class App extends React.Component {
@@ -70,7 +71,12 @@ class App extends React.Component {
           view={this.state.isListView}
           refresh={this.refresh}
         />
-        {this.state.isLoading && <Loader />}
+        <Home users={this.state.people}
+            val={this.state.search}
+            search={this.onChange}
+            list ={this.state.isListView} 
+            loading = {this.state.isLoading}/>
+        {/* {this.state.isLoading && <Loader />}
         {!this.state.isLoading && <Search search={this.onChange} val={this.state.search}/>}
         {!this.state.isLoading && (this.state.isListView ? (
           <ListOfUsers
@@ -84,7 +90,7 @@ class App extends React.Component {
             val={this.state.search}
             search={this.onChange}
           />
-        ))}
+        ))} */}
         {!this.state.isLoading && <Footer />}
       </Fragment>
     );
