@@ -3,11 +3,15 @@ import { Container, Row } from "react-bootstrap";
 import hideAdress from "../../data/hideEmail";
 import parseDateExtra from "../../data/parseDate";
 import { filterUser } from "../../data/flteredUsers";
-import { count } from "../../data/countMaleAndFemile"
+import { count } from "../../data/countMaleAndFemile";
+import NoResults from '../noUsers/NoUsers';
 import "./listOfUsers.css";
 
-export const ListOfUsersExtra = ({ users, val, search }) => {
+export const ListOfUsersExtra = ({ users, val}) => {
   const filteredUsers = filterUser(users, val);
+  if(filteredUsers.length === 0){
+    return <NoResults />
+  }
   return (
     <Container>
       <p className="count">{count(filteredUsers)}</p>

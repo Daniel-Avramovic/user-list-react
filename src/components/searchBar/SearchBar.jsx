@@ -1,10 +1,10 @@
 import React from 'react';
+import './search.css'
 
 const SearchBar = (props) => {
-console.log(props, 'value')
     return(
-        <div className="container">
-        <i class="material-icons prefix">search</i>
+        <div className="container d-flex align-items-center i">
+        <i className="material-icons prefix">search</i>
         <input type="search" placeholder="Search" value={props.val} onChange={props.search}/>
         </div>
     )
