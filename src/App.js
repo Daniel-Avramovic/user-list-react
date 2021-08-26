@@ -6,7 +6,8 @@ import Header from "./components/header/Header";
 // import { ListOfUsersExtra } from "./components/listOfUsers/ListOfUsers-extra";
 import { Footer } from "./components/footer/Footer";
 // import Loader from "./components/loader/Loader";
-import { Home } from './components/home/Home'
+import { Home } from './components/home/Home';
+
 
 import "./App.css";
 class App extends React.Component {
@@ -16,6 +17,7 @@ class App extends React.Component {
       isListView: true,
       people: JSON.parse(localStorage.getItem("users")) || [],
       search: "",
+      update: new Date(JSON.parse(localStorage.getItem("update")))
     };
   }
 
@@ -37,8 +39,15 @@ class App extends React.Component {
 
   componentDidMount() {
     const users = localStorage.getItem("users");
+    const update = localStorage.getItem("update");
     if (!users) {
       this.fetchUsers();
+    }
+    if(!update){
+      localStorage.setItem("update", JSON.stringify(new Date()));
+      this.setState({
+        update: new Date(),
+      })
     }
     // const url = "https://randomuser.me/api/?results=15";
     // fetch(url)
@@ -57,8 +66,10 @@ class App extends React.Component {
   toggleLayout = () => this.setState({ isListView: !this.state.isListView });
 
   refresh = () => {
+    localStorage.setItem("update", JSON.stringify(new Date()));
     this.setState({
       search: "",
+      update: new Date(),
     });
     this.fetchUsers()
   };
@@ -91,7 +102,9 @@ class App extends React.Component {
             search={this.onChange}
           />
         ))} */}
-        {!this.state.isLoading && <Footer />}
+        
+        {!this.state.isLoading && <Footer update={this.state.update}/>}
+        
       </Fragment>
     );
   }

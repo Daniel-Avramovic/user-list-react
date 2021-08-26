@@ -1,10 +1,14 @@
-import React from 'react';
-import './footer.css'
+import React from "react";
+import LastUpdate from "../lastUpdate/LastUpdate";
+import "./footer.css";
 
-export const Footer = () => {
-    return (
-        <footer>
+export const Footer = ({ update }) => {
+  return (
+    <footer>
+      <div className="container flex">
         <p>Copyrigth &copy; BIT Student Daniel Avramovic 2021</p>
-        </footer>
-    )
-}
+        <LastUpdate update={update} />
+      </div>
+    </footer>
+  );
+};
