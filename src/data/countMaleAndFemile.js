@@ -7,5 +7,5 @@ export const count = (users) => {
   });
   let male = users.length - female;
 
-  return `Male: ${male} Femile: ${female}`
+  return `Male: ${male} Female: ${female}`
 }
