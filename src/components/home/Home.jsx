@@ -46,18 +46,6 @@ class Home extends React.Component{
         update: new Date(),
       })
     }
-    // const url = "https://randomuser.me/api/?results=15";
-    // fetch(url)
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     let get = localStorage.getItem('users');
-    //     if(get === null){
-    //       localStorage.setItem('users', JSON.stringify(data.results))
-    //       this.setState({
-    //            people:  data.results,
-    //         })};
-    //   });
-    // console.log(JSON.parse(localStorage.getItem("users")));
   }
 
   toggleLayout = () => this.setState({ isListView: !this.state.isListView });
@@ -96,22 +84,6 @@ class Home extends React.Component{
           />
         ))}
         </main>
-        {/* {this.state.isLoading && <Loader />}
-        {!this.state.isLoading && <Search search={this.onChange} val={this.state.search}/>}
-        {!this.state.isLoading && (this.state.isListView ? (
-          <ListOfUsers
-            users={this.state.people}
-            val={this.state.search}
-            search={this.onChange}
-          />
-        ) : (
-          <ListOfUsersExtra
-            users={this.state.people}
-            val={this.state.search}
-            search={this.onChange}
-          />
-        ))} */}
-        
         {!this.state.isLoading && <Footer update={this.state.update}/>}
         
       </Fragment>
