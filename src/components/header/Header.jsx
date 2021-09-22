@@ -15,19 +15,14 @@ const Header = ({ changeUi, view, refresh }) => {
               <Link to="/about/">About us</Link>
             </li>
             <li>
-              <a href="!#">
-                <i className="medium material-icons" onClick={refresh}>
-                  refresh
-                </i>
-              </a>
+              <i className="medium material-icons butHover" onClick={refresh}>
+                refresh
+              </i>
             </li>
             <li>
-              <a href="!#" onClick={changeUi}>
-                {" "}
-                <i className="medium material-icons">
-                  {view ? "view_module" : "view_list"}
-                </i>
-              </a>
+              <i className="medium material-icons butHover" onClick={changeUi}>
+                {view ? "view_module" : "view_list"}
+              </i>
             </li>
           </ul>
         </div>
